@@ -7,7 +7,7 @@ import FloatingButtons from '@/components/FloatingButtons';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'BellaMora - Elegant Nightwear',
+  title: 'BellaMora',
   description: 'Discover the finest collection of elegant and comfortable nightwear. Shop our signature styles and drift into dreams with BellaMora.',
 };
 
