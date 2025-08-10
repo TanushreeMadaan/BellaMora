@@ -10,9 +10,8 @@ import { Product } from '@/types';
 export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  // Split the products into two distinct collections
   const signatureStyles = products.slice(0, 4);
-  const aLineStyles = products.slice(4, 7); // Assuming you have at least 7 products
+  const aLineStyles = products.slice(4, 7); 
 
   const handleQuickView = (product: Product) => {
     setSelectedProduct(product);
