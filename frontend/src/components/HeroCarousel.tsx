@@ -1,20 +1,31 @@
-'use client';
+'use client'; 
 
 import React from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { useIsMobile } from '@/hooks/useIsMobile'; 
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const HeroCarousel: React.FC = () => {
-  const images = [
+  const isMobile = useIsMobile();
+
+  const desktopImages = [
     '/banners/hero-1.png',
+    '/banners/hero-2.png',
     '/banners/hero-3.png',
-    '/banners/hero-2.png'
   ];
+
+  const mobileImages = [
+    '/banners/hero-4.png',
+    '/banners/hero-5.png',
+    '/banners/hero-6.png',  
+  ]
+
+  const images = isMobile ? mobileImages : desktopImages;
 
   return (
     <div className="w-full">
@@ -27,7 +38,8 @@ const HeroCarousel: React.FC = () => {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        className="w-full h-[500px]"
+        className={`w-full ${isMobile ? 'h-[600px]' : 'h-[500px]'}`}
+        key={isMobile ? 'mobile' : 'desktop'}
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
