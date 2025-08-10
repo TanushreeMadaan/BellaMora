@@ -26,6 +26,8 @@ const QuickViewModal = ({ product, onClose }: QuickViewModalProps) => {
 
   if (!product || !selectedVariant) return null;
 
+  const availableSizes = ['M', 'L', 'XL', '2XL'];
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4">
       <div className="relative bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-full overflow-y-auto">
@@ -76,18 +78,20 @@ const QuickViewModal = ({ product, onClose }: QuickViewModalProps) => {
 
             <div className="mb-6">
               <h3 className="text-sm font-semibold text-gray-500 uppercase mb-2">Available Sizes</h3>
-              <p className="text-brand-charcoal font-medium text-base">
-                M / L / XL / 2XL
-              </p>
+              <div className="flex items-center gap-2 text-base font-medium">
+                {availableSizes.map((size, index) => (
+                  <React.Fragment key={size}>
+                    <span className="text-brand-charcoal">{size}</span>
+
+                    {index < availableSizes.length - 1 && (
+                      <span className="text-brand-rose font-light mx-1">|</span>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
             </div>
             
-            {/* The "Buy on Amazon" button is now updated to match the product card */}
-            <a 
-              href={product.amazonLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="w-full text-center bg-brand-cream text-brand-charcoal py-3 px-6 rounded-md font-bold hover:bg-brand-rose transition-colors duration-300"
-            >
+            <a href={product.amazonLink} target="_blank" rel="noopener noreferrer" className="w-full text-center bg-brand-cream text-brand-charcoal py-3 px-6 rounded-md font-bold hover:bg-brand-rose transition-colors duration-300">
               Buy on Amazon
             </a>
           </div>
